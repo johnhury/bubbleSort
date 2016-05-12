@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1-ArrayList-改进版</title>
+</head>
+<body>
+	<script>
+	function creatEmptyArray(size){
+		function ArrayList(){
+			var array=[];
+			this.insert=function(item){
+				array.push(item);
+			}
+			this.print=function() {
+				return array.join(",");
+			}
+			this.bubbleSort=function(){							//冒泡排序
+				for (var i = 0; i < array.length; i++) {
+					for(var j = 0; j < array.length - 1 - i; j++){
+						if(array[j]<array[j+1]){
+							swap(j,j+1);
+						}
+					}
+				}
+			}
+			function swap(index1,index2){						//两个数交换
+				var aux=array[index1];
+				array[index1]=array[index2];
+				array[index2]=aux;
+			}
+		}
+		var a1=new ArrayList();									//实例化
+		for(var i=0;i<size;i++){
+			a1.insert(i);
+		}
+		console.log(a1.print());								//打印排序前数组
+		a1.bubbleSort();
+		console.log(a1.print());								//打印排序后数组
+	}
+	creatEmptyArray(10);
+	</script>
+</body>
+</html>
